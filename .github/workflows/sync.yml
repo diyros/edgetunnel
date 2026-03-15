@@ -21,7 +21,7 @@ jobs:
       - name: Fetch _worker.js file list from source repo
         run: |
           curl -s https://api.github.com/repos/cmliu/edgetunnel/contents \
-          | jq -r '.[] | select(.name | test("\\.(js?)$")) | .download_url' > urls.txt
+          | jq -r '.[] | select(.name ) | .download_url' > urls.txt
           echo "Found playlist URLs:"
           cat urls.txt           
 

@@ -43,7 +43,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add .  
+          git add *.md *.js 2>/dev/null || true
+
+          if git diff --cached --quiet; then
+            echo "No changes."
+            exit 0
+          fi
 
           git commit -m "Update _worker.js"
 
